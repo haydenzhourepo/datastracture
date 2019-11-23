@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/hayden/code/cpp/datastructure/linear_list/SqList/c1.h
+string.h
+-
+ctype.h
+-
+limits.h
+-
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+
+/Users/hayden/code/cpp/datastructure/linear_list/SqList/main.c
+c1.h
+/Users/hayden/code/cpp/datastructure/linear_list/SqList/c1.h
+
