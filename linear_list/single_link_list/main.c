@@ -204,13 +204,73 @@ Status ListTraverse(LinkList L, void(*vi)(ElemType))
     return OK;
 }
 
-void CreateList(LinkList *L, int n) {
+void CreateList_1(LinkList *L, int n) {
+    // 逆位序(插在表头)输入n个元素的值，建立带表头结点的单链线性表L
+    *L = (LinkList)malloc(sizeof(struct LNode));
+    LinkList p;
+    for (int i = 0; i < n; ++i) {
+        p = (LinkList)malloc(sizeof(struct LNode));
+        scanf("%d", &p->data);
+        p->next = (*L)->next;
+        (*L)->next = p;
+    }
+}
+Status CreateList_2(LinkList *L, int n) {
+    // 正位序(插在表尾)输入n个元素的值，建立带表头结点的单链线性表L
 
+    if (n < 1) {
+        return ERROR;
+    }
+    *L = (LinkList)malloc(sizeof(struct LNode));
+    LinkList p, q;
+    q = *L; // 初始化q 执行头结点
+
+    for (int i = 0; i < n; ++i) {
+        p = (LinkList)malloc(sizeof(struct LNode));
+        scanf("%d", &p->data);
+        q->next = p;
+        q = q->next; // 后移动一位
+    }
+
+    p->next = NULL;
+
+    return OK;
+}
+
+void MergeList(LinkList *La,LinkList *Lb,LinkList *Lc) {
+    /* 已知单链线性表La和Lb的元素按值非递减排列。 */
+    /* 归并La和Lb得到新的单链线性表Lc，Lc的元素也按值非递减排列 */
+    LinkList pa, pb, pc;
+    pa = (*La)->next;
+    pb = (*Lb)->next;
+    pc = (*Lc) = (*La); // 将La的头结点赋给*Lc， La Lc 只想同一个头结点
+
+    while (pa && pb) {
+        if (pa->data < pb->data){
+            pc->next = pa;
+            pa = pa->next;
+        } else{
+            pc->next = pb;
+            pb = pb->next;
+        }
+        pc = pc->next;
+    }
+
+    pc->next = pa ? pa : pb;
+}
+
+
+void print(ElemType e){
+    printf("%d\n", e);
 }
 
 int main() {
     LinkList La;
-
-    InitList(&La);
+    LinkList Lb;
+    LinkList Lc;
+    CreateList_2(&La, 3);
+    CreateList_2(&Lb, 3);
+    MergeList(&La, &Lb, &Lc);
+    ListTraverse(Lc, print);
     return 0;
 }

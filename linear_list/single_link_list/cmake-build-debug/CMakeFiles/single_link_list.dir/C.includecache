@@ -6,7 +6,23 @@
 
 #IncludeRegexTransform: 
 
+/Users/hayden/code/cpp/datastructure/linear_list/single_link_list/c1.h
+string.h
+-
+ctype.h
+-
+limits.h
+-
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+
 /Users/hayden/code/cpp/datastructure/linear_list/single_link_list/main.c
 stdio.h
 -
+c1.h
+/Users/hayden/code/cpp/datastructure/linear_list/single_link_list/c1.h
 
